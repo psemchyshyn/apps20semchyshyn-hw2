@@ -31,7 +31,7 @@ public class Stack {
         return toRemove;
     }
 
-    public Object[] toArray(){
+    public Object[] toArray() {
         return storage.toArray();
     }
 

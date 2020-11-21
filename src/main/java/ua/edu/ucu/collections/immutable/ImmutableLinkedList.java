@@ -13,7 +13,7 @@ public final class ImmutableLinkedList implements ImmutableList{
     private int currSize;
     private Node head;
 
-    public ImmutableLinkedList(){
+    public ImmutableLinkedList() {
         head = null;
     }
 
@@ -29,7 +29,7 @@ public final class ImmutableLinkedList implements ImmutableList{
         currSize = size;
     }
 
-    private ImmutableLinkedList internalCopy(){
+    private ImmutableLinkedList internalCopy() {
         if (head != null) {
             Node headCopy = new Node(head.value);
             Node tempCopy = headCopy;
@@ -57,7 +57,7 @@ public final class ImmutableLinkedList implements ImmutableList{
     public Node getPrevNode(int index) {
         checkOutOfBounds(--index);
         Node temp = head;
-        while (index-- != 0){
+        while (index-- != 0) {
             temp = temp.next;
         }
         return temp;
@@ -185,14 +185,14 @@ public final class ImmutableLinkedList implements ImmutableList{
 
     public Object[] toArray() {
         Object[] arr =  new Object[currSize];
-        for (int i = 0; i < currSize; i++){
+        for (int i = 0; i < currSize; i++) {
             arr[i] = get(i);
         }
         return arr;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuffer bf = new StringBuffer("[ ");
         for (int i = 0; i < currSize; i++) {
             bf.append((Object) get(i));

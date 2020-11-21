@@ -25,7 +25,7 @@ public final class ImmutableArrayList implements ImmutableList {
         return changeBuffer(1);
     }
 
-    private Object[] shrink(){
+    private Object[] shrink() {
         return changeBuffer(2);
     }
 
@@ -60,7 +60,7 @@ public final class ImmutableArrayList implements ImmutableList {
         }
         Object[] values = expand();
         int i = currSize;
-        while(i != index) {
+        while (i != index) {
             values[i] = values[i - 1];
             i--;
         }
@@ -99,14 +99,14 @@ public final class ImmutableArrayList implements ImmutableList {
         return new ImmutableArrayList(values, currSize - 1);
     }
 
-    public ImmutableList set(int index, Object e){
+    public ImmutableList set(int index, Object e) {
         checkIndexRange(index);
         Object[] values = expand();
         values[index] = e;
         return new ImmutableArrayList(values, currSize);
     }
 
-    public int indexOf(Object e){
+    public int indexOf(Object e) {
         for (int i = 0; i < currSize; i++) {
             if (get(i).equals(e)) {
                 return i;
@@ -115,15 +115,15 @@ public final class ImmutableArrayList implements ImmutableList {
         return -1;
     }
 
-    public int size(){
+    public int size() {
         return currSize;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return currSize == 0;
     }
 
-    public Object[] toArray(){
+    public Object[] toArray() {
         Object[] arr = new Object[currSize];
         for (int i = 0; i < currSize; i++) {
             arr[i] = get(i);
@@ -132,7 +132,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuffer bf = new StringBuffer("[ ");
         for (int i = 0; i < currSize; i++) {
             bf.append((Object) get(i));

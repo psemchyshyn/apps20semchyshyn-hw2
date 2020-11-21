@@ -6,11 +6,11 @@ public class Queue {
     // The last element of the Queue is the first element of the storage
     private ImmutableLinkedList storage;
 
-    public Queue(){
+    public Queue() {
         storage = new ImmutableLinkedList();
     }
 
-    public Queue(Object from[]) {
+    public Queue(Object[] from) {
         storage = new ImmutableLinkedList(from);
     }
 
@@ -28,7 +28,7 @@ public class Queue {
         return toRemove;
     }
 
-    public Object[] toArray(){
+    public Object[] toArray() {
         return storage.toArray();
     }
 
