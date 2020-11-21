@@ -1,13 +1,17 @@
+import ua.edu.ucu.collections.Stack;
 import ua.edu.ucu.collections.immutable.ImmutableArrayList;
 import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 import ua.edu.ucu.collections.immutable.ImmutableList;
 
 public class Main {
     public static void main(String[] args) {
-        ImmutableList linkedListList = new ImmutableLinkedList();
-        linkedListList = linkedListList.add(5);
-        linkedListList = linkedListList.add(23);
-        System.out.println(linkedListList);
+        Object[] arr = new Object[] {1, 4, 5, 2, 8};
+        Stack stack1 = new Stack(arr);
+        System.out.println(stack1);
+        stack1.pop();
+        System.out.println(stack1);
+        stack1.push(259);
+        System.out.println(stack1);
 
     }
 }

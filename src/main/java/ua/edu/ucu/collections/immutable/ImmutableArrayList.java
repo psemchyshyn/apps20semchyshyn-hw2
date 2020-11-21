@@ -1,6 +1,5 @@
 package ua.edu.ucu.collections.immutable;
 
-import javax.sound.midi.Synthesizer;
 import java.util.Arrays;
 
 public final class ImmutableArrayList implements ImmutableList {
@@ -108,14 +107,12 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public int indexOf(Object e){
-        int ind = 0;
-        for (int i = 0; storage[i] != e; i++) {
-            ind = i;
-            if (ind > currSize) {
-                return -1;
+        for (int i = 0; i < currSize; i++) {
+            if (get(i).equals(e)) {
+                return i;
             }
         }
-        return ind;
+        return -1;
     }
 
     public int size(){
@@ -146,23 +143,5 @@ public final class ImmutableArrayList implements ImmutableList {
         }
         bf.append(" ]");
         return bf.toString();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || ! (obj instanceof ImmutableList)) {
-            return false;
-        } else {
-            ImmutableList casted = (ImmutableList) obj;
-            if (casted.size() != this.size()) {
-                return false;
-            }
-            for (int i = 0; i < this.size(); i++) {
-                if (!this.get(i).equals(casted.size())) {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 }

@@ -200,7 +200,8 @@ public class ImmutableArrayListTest {
     @Test
     public void testMultipleIndexOf() {
         int index = multiple.indexOf(10);
-        int exp = 4;
+        System.out.println(multiple);
+        int exp = 5;
         assertEquals(exp, index);
     }
 
@@ -305,12 +306,4 @@ public class ImmutableArrayListTest {
         String expected = "[ 3, 5, 1, 8, 1, 10 ]";
         assertEquals(expected, multiple.toString());
     }
-
-
-
-
-
-
-
-
 }
