@@ -2,8 +2,8 @@ package ua.edu.ucu.collections;
 
 import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 
-public class Queue<Type> {
-    private ImmutableLinkedList<Type> storage;
+public class Queue {
+    private ImmutableLinkedList storage;
 
     public Queue(){
         storage = new ImmutableLinkedList();

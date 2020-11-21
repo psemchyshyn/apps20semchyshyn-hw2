@@ -1,12 +1,13 @@
 import ua.edu.ucu.collections.immutable.ImmutableArrayList;
+import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 import ua.edu.ucu.collections.immutable.ImmutableList;
 
 public class Main {
     public static void main(String[] args) {
-        Object[] arr = new Object[] {4, 2, 4, 5};
-        ImmutableList arrayList = new ImmutableArrayList(arr);
-        System.out.println(arrayList);
-        arr[1] = 5;
-        System.out.println(arrayList);
+        ImmutableList linkedListList = new ImmutableLinkedList();
+        linkedListList = linkedListList.add(5);
+        linkedListList = linkedListList.add(23);
+        System.out.println(linkedListList);
+
     }
 }

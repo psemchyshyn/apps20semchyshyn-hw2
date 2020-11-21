@@ -2,8 +2,8 @@ package ua.edu.ucu.collections;
 
 import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 
-public class Stack<Type> {
-    private ImmutableLinkedList<Type> storage;
+public class Stack {
+    private ImmutableLinkedList storage;
 
     public Stack(){
         storage = new ImmutableLinkedList();

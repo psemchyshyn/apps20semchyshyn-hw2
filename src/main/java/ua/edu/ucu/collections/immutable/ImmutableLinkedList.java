@@ -1,10 +1,10 @@
 package ua.edu.ucu.collections.immutable;
 
-public class ImmutableLinkedList<Type> implements ImmutableList{
-    private static class Node<Type> {
+public class ImmutableLinkedList implements ImmutableList{
+    private static class Node {
         public Node next;
-        public Type value;
-        public Node(Type value) {
+        public Object value;
+        public Node(Object value) {
             this.next = null;
             this.value = value;
         }
@@ -51,9 +51,8 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
     }
 
     public ImmutableLinkedList removeFirst() {
-        ImmutableLinkedList<Type> copy = internalCopy();
+        ImmutableLinkedList copy = internalCopy();
         copy.head = copy.head.next;
-        copy.head.next = null;
         return copy;
     }
 
@@ -71,8 +70,8 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
     }
 
     public ImmutableLinkedList addFirst(Object e) {
-        ImmutableLinkedList<Type> copy = new ImmutableLinkedList();
-        Node newNode = new Node((Type) e);
+        ImmutableLinkedList copy = new ImmutableLinkedList();
+        Node newNode = new Node(e);
         newNode.next = copy.head;
         copy.head = newNode;
         return copy;
@@ -87,11 +86,11 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
     }
 
     public ImmutableList add(int index, Object e) {
-        ImmutableLinkedList<Type> copy = internalCopy();
+        ImmutableLinkedList copy = internalCopy();
         Node temp  = copy.getPrevNode(index);
-        Node newNode = new Node((Type) e);
+        Node newNode = new Node(e);
         newNode.next = temp.next;
-        temp = newNode;
+        temp.next = newNode;
         currSize++;
         return copy;
     }
@@ -114,12 +113,12 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
-        return (Type) temp.value;
+        return temp.value;
     }
 
     public ImmutableList remove(int index) {
         checkOutOfBounds(index);
-        ImmutableLinkedList<Type> copy = new ImmutableLinkedList();
+        ImmutableLinkedList copy = new ImmutableLinkedList();
         if (index == 0) {
             return removeFirst();
         } else {
@@ -132,12 +131,12 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
 
     public ImmutableList set(int index, Object e) {
         checkOutOfBounds(index);
-        ImmutableLinkedList<Type> copy = internalCopy();
+        ImmutableLinkedList copy = internalCopy();
         if (index == 0) {
-            copy.head.value = (Type) e;
+            copy.head.value = e;
         } else {
             Node temp = getPrevNode(index);
-            temp.next.value = (Type) e;
+            temp.next.value = e;
         }
         return copy;
     }
@@ -166,9 +165,9 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
     }
 
     public Object[] toArray() {
-        Type[] arr = (Type[]) new Object[currSize];
+        Object[] arr =  new Object[currSize];
         for (int i = 0; i < currSize; i++){
-            arr[i] = (Type)  get(i);
+            arr[i] = get(i);
         }
         return arr;
     }
@@ -177,12 +176,11 @@ public class ImmutableLinkedList<Type> implements ImmutableList{
     public String toString() {
         StringBuffer bf = new StringBuffer("[ ");
         for (int i = 0; i < currSize; i++) {
-            bf.append((Type) get(i));
+            bf.append(get(i));
             bf.append(", ");
         }
         bf = bf.delete(bf.length() - 2, bf.length());
         bf.append(" ]");
         return bf.toString();
     }
-
 }

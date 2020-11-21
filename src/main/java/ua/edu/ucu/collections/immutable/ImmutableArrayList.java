@@ -1,5 +1,6 @@
 package ua.edu.ucu.collections.immutable;
 
+import javax.sound.midi.Synthesizer;
 import java.util.Arrays;
 
 public final class ImmutableArrayList implements ImmutableList {
@@ -12,7 +13,8 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList(Object[] from) {
-        this(from, from.length);
+        storage = from.length == 0 ? new Object[DEFAULT_SIZE] : from;
+        currSize = from.length;
     }
 
     private ImmutableArrayList(Object[] values, int size) {
@@ -72,9 +74,9 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableList addAll(int index, Object[] c) {
-        ImmutableList temp = add(c[0]);
-        for (int i = 1; i < c.length; i++) {
-            temp = add(index + i, c[i]);
+        ImmutableList temp = new ImmutableArrayList(storage, currSize);
+        for (int i = 0; i < c.length; i++) {
+            temp = temp.add(index + i, c[i]);
         }
         return temp;
     }
@@ -139,7 +141,9 @@ public final class ImmutableArrayList implements ImmutableList {
             bf.append((Object) get(i));
             bf.append(", ");
         }
-        bf = bf.delete(bf.length() - 2, bf.length());
+        if (bf.length() > 3) {
+            bf = bf.delete(bf.length() - 2, bf.length());
+        }
         bf.append(" ]");
         return bf.toString();
     }
